@@ -61,8 +61,6 @@ You can test the calculators out by opening the `index.html` file in your web br
 ## File Structure
 ```
 └── 📁toy-problems
-    └── 📁.vscode
-        └── settings.json
     └── README.md
     └── 📁challengeFiles
         └── netSalary.js
