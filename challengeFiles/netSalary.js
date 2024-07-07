@@ -38,8 +38,13 @@ function netSalaryCalc(basicSal, benefits) {
 
     // Testing Payee calculation 
     console.log(`The Payee Calculation: ${payeeCalculation}`)
-    
-    const netSalary = grossSalary - nssfCalculation(grossSalary) - payeeCalculation
+    // Adding Housing Levy 
+    function housingLevy (salary) {
+        return 0.015 * grossSalary
+    }
+
+    const housingLevyCalc = housingLevy(grossSalary)
+    const netSalary = grossSalary - nssfCalculation(grossSalary) - payeeCalculation - housingLevy
 
     return netSalary 
 }
