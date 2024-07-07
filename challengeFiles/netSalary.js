@@ -87,14 +87,11 @@ function calculateNhifDeduction (salary) {
 }
 
 function nssfCalculation (pensionablePay) {
-    if (typeof pensionablePay !== 'number') {
-        return 'Please enter a number'
-    }
 
-    if ((0.06 * pensionablePay) > 36000) {
-        return 36000
-    } else {
+    if (pensionablePay <= 36000) {
         return 0.06 * pensionablePay
+    } else if(pensionablePay > 36000) {
+        return 36000 * 0.06
     }
 }
 
