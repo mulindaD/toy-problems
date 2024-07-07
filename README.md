@@ -32,7 +32,7 @@ To set up this project locally, follow these steps:
 No additional installation or setup is required as this is a static HTML/JavaScript project.
 
 ## Usage
-The main goal of this project was to execute succesfully the three challenges: Student Grade Calculator, Net Salary Calculation.
+The main goal of this project was to successfully execute the three challenges: Student Grade Calculator, Net Salary Calculation and Speed Detector.
 You can test the calculators out by opening the `index.html` file in your web browser, you'll see three forms:
 
 1. **Student Grade Calculator**: 
@@ -45,7 +45,7 @@ You can test the calculators out by opening the `index.html` file in your web br
 
 3. **Net Salary Calculator**: 
    - Enter the basic salary and benefits.
-   - Click "Calculate Net Salary" to see a breakdown of the salary including deductions and net pay.
+   - Click "Calculate Net Salary" for a salary breakdown including deductions and net pay.
 
 ## Features
 - Student Grade Calculator: Converts numerical grades to letter grades. e,g 80 -> Returns an 'A' Grade.
@@ -55,8 +55,8 @@ You can test the calculators out by opening the `index.html` file in your web br
 
 ## Technologies Used
 - HTML5
-- CSS (Tailwind CSS for styling) - I used this project as an opportunity to further deepen working with tailwind.
-- JavaScript (Vanilla JS for functionality). Beyond the challenge requirement; I read up and implemented DOM manipulation and event handling to implement a HTML page with three forms to test the Javascript functionality.
+- CSS (Tailwind CSS for styling) - I used this project to further deepen the practice I had working with tailwindcss.
+- JavaScript (Vanilla JS for functionality). Beyond the challenge requirement; I read up and implemented DOM manipulation and event handling to implement an HTML page with three forms to test the Javascript functionality.
 
 ## File Structure
 ```
