@@ -43,8 +43,8 @@ function netSalaryCalc(basicSal, benefits) {
         return 0.015 * grossSalary
     }
 
-    const housingLevyCalc = housingLevy(grossSalary)
-    const netSalary = grossSalary - nssfCalculation(grossSalary) - payeeCalculation - housingLevy
+    const housingLevyCalc = housingLevy(grossSalary) 
+    const netSalary = grossSalary - nssfCalculation(grossSalary) - payeeCalculation - housingLevyCalc
 
     return netSalary 
 }
