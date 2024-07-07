@@ -1,0 +1,105 @@
+// Net Salary Calculator (Toy Problem)
+
+function netSalaryCalc(basicSal, benefits) {
+    if (typeof basicSal !== 'number' || typeof benefits !== 'number'){
+        return `Please enter a number for the basic salary or benefits`
+    }
+
+    const grossSalary = basicSal + benefits
+    console.log(`The gross Salary: ${grossSalary}`)
+    
+
+    const taxableIncome = grossSalary - nssfCalculation(grossSalary)
+    console.log(`The NSSF Deduction is: ${nssfCalculation(grossSalary)} \nThe Taxable income is: ${taxableIncome}`)
+   
+    function calculatePayee(taxableMoney) {
+        
+        const personalRelief = 2400
+        const insuranceRelief = 0.15 * calculateNhifDeduction(grossSalary)
+
+        //Testing Insurance Premium and Insurance Relief
+        console.log(`The insurance Premium is: ${calculateNhifDeduction(grossSalary)}\nThe Insurance relief is: ${insuranceRelief}`)
+
+
+        if (taxableMoney <= 24000) {
+            return 0.1 * taxableMoney
+        } else if (taxableMoney > 24000 && taxableMoney <= 32333) {
+            return ((taxableMoney - 24000) * 0.25) + (24000 * 0.1) - personalRelief - insuranceRelief
+        } else if (taxableMoney > 32333 && taxableMoney <= 500000) {
+            return ((taxableMoney - 32333) * 0.3) + ((32333 - 24001) * 0.25) + (24000 * 0.1) - personalRelief - insuranceRelief
+        } else if (taxableMoney > 500000 && taxableMoney <= 800000) {
+            return ((taxableMoney - 500000) * 0.325) + ((500000 - 32444) * 0.3) + ((32333 - 24001) * 0.25) + (24000 * 0.1) - personalRelief - insuranceRelief
+        } else if (taxableMoney > 800000) { 
+            return ((taxableMoney - 800000)* 0.35) + ((800000 - 500001) * 0.325) + ((500000 - 32444) * 0.3) + ((32333 - 24001) * 0.25) + (24000 * 0.1) - personalRelief - insuranceRelief
+        }
+    }
+
+    const payeeCalculation = calculatePayee(taxableIncome)
+
+    // Testing Payee calculation 
+    console.log(`The Payee Calculation: ${payeeCalculation}`)
+    
+    const netSalary = grossSalary - nssfCalculation(grossSalary) - payeeCalculation
+
+    return netSalary 
+}
+
+// Testing Net Salary calculation by adding benefits and basic salary 
+console.log(`The net salary is : ${netSalaryCalc(50000, 10000)}`) 
+
+
+function calculateNhifDeduction (salary) {
+    if (salary <= 5999) {
+        return 150
+    } else if (salary > 6000 && salary < 8000) {
+        return 300
+    } else if (salary >= 8000 && salary < 12000) {
+        return 400
+    } else if (salary >= 12000 && salary < 15000) {
+        return 500
+    } else if (salary >= 15000 && salary < 20000) {
+        return 600
+    } else if (salary >= 20000 && salary < 25000) {
+        return 750
+    } else if (salary >= 25000 && salary < 30000) {
+        return 850
+    } else if (salary >= 30000 && salary < 35000) {
+        return 900
+    } else if (salary >= 35000 && salary < 40000) {
+        return 950
+    } else if (salary >= 40000 && salary < 45000) {
+        return 1000
+    } else if (salary >= 45000 && salary < 50000) {
+        return 1100
+    } else if (salary >= 50000 && salary < 60000) {
+        return 1200
+    } else if (salary >= 60000 && salary < 70000) {
+        return 1300
+    } else if (salary >= 70000 && salary < 80000) {
+        return 1400
+    } else if (salary >= 80000 && salary < 90000) {
+        return 1500
+    } else if (salary >= 90000 && salary < 100000) {
+        return 1600
+    } else if (salary >= 100000) {
+        return 1700
+    }
+}
+
+function nssfCalculation (pensionablePay) {
+    if (typeof pensionablePay !== 'number') {
+        return 'Please enter a number'
+    }
+
+    if ((0.06 * pensionablePay) > 36000) {
+        return 36000
+    } else {
+        return 0.06 * pensionablePay
+    }
+}
+
+// Testing NSSF Dedutcions
+// console.log(`Nssf Deductions: ${nssfCalculation(300000)}`)
+
+// Testing NHIF Deductions
+// console.log (`NHIF Deductions: ${calculateNhifDeduction(130000)}`)
