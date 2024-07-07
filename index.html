@@ -7,7 +7,63 @@
     <title>Toy Problems Code Challenge</title>
 </head>
 <body>
+    <header class="bg-blue-800 p-4">
+        <h1 class="text-white text-2xl font-bold text-center">Toy Problems Code Challenge</h1>
+    </header>
 
+    <main class="container mx-auto mt-8 px-4">
+        <div class="flex flex-wrap -mx-2">
+            <section id="form1" class="w-full md:w-1/3 px-2 mb-4">
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <h2 class="text-2xl mb-4">Student Grade Calculator</h2>
+                    <form id="gradeForm">
+                        <div class="mb-4">
+                            <label for="studentGrade" class="block mb-2">Student Grade:</label>
+                            <input type="number" id="studentGrade" name="studentGrade" required
+                                   class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Calculate Grade</button>
+                    </form>
+                    <div id="output1" class="mt-4 p-4 bg-gray-100 rounded"></div>
+                </div>
+            </section>
+
+            <section id="form2" class="w-full md:w-1/3 px-2 mb-4">
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <h2 class="text-2xl mb-4">Speed Detector</h2>
+                    <form id="speedForm">
+                        <div class="mb-4">
+                            <label for="speed" class="block mb-2">Speed (km/h):</label>
+                            <input type="number" id="speed" name="speed" required
+                                   class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Check Speed</button>
+                    </form>
+                    <div id="output2" class="mt-4 p-4 bg-gray-100 rounded"></div>
+                </div>
+            </section>
+
+            <section id="form3" class="w-full md:w-1/3 px-2 mb-4">
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <h2 class="text-2xl mb-4">Net Salary Calculator</h2>
+                    <form id="salaryForm">
+                        <div class="mb-4">
+                            <label for="basicSalary" class="block mb-2">Basic Salary:</label>
+                            <input type="number" id="basicSalary" name="basicSalary" required
+                                   class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="benefits" class="block mb-2">Benefits:</label>
+                            <input type="number" id="benefits" name="benefits" required
+                                   class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Calculate Net Salary</button>
+                    </form>
+                    <div id="output3" class="mt-4 p-4 bg-gray-100 rounded"></div>
+                </div>
+            </section>
+        </div>
+    </main>
     
     <script src="challengeFiles/netSalary.js"></script>
     <script src="challengeFiles/speedDetector.js"></script>

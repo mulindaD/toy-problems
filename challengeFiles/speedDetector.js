@@ -13,8 +13,24 @@ function speedDetector(carSpeed) {
     if (demeritPoints > 12) {
         return "License suspended"
     } else if (demeritPoints <= 12) {
-        return `Points: ${demeritPoints}`
+        return `${demeritPoints} demerit points!`
     }
 }
 
-console.log(speedDetector(140))
+// console.log(speedDetector(140))
+
+// Function to handle form submission
+function handleSpeedSubmission(event) {
+    event.preventDefault();
+    const speed = document.getElementById('speed').value;
+    const result = speedDetector(parseFloat(speed));
+    document.getElementById('output2').textContent = `${result}`;
+}
+
+// Adding the event listener when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    const speedForm = document.getElementById('speedForm');
+    if (speedForm) {
+        speedForm.addEventListener('submit', handleSpeedSubmission);
+    }
+});

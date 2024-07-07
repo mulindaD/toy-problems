@@ -103,3 +103,41 @@ function nssfCalculation (pensionablePay) {
 
 // Testing NHIF Deductions
 // console.log (`NHIF Deductions: ${calculateNhifDeduction(130000)}`)
+
+
+function handleSalarySubmission(event) {
+    event.preventDefault();
+    const basicSalary = parseFloat(document.getElementById('basicSalary').value);
+    const benefits = parseFloat(document.getElementById('benefits').value);
+    const result = netSalaryCalc(basicSalary, benefits);
+    
+    // Doing a detailed Output for the Net salary calculation
+    let output = '';
+    if (typeof result === 'number') {
+        const grossSalary = basicSalary + benefits;
+        const nssf = nssfCalculation(grossSalary);
+        const nhif = calculateNhifDeduction(grossSalary);
+        const taxableIncome = grossSalary - nssf;
+        const payee = grossSalary - nssf - result;
+
+        output = `
+            Gross Salary: KES ${grossSalary.toFixed(2)}<br>
+            NSSF Deduction: KES ${nssf.toFixed(2)}<br>
+            NHIF Deduction: KES ${nhif.toFixed(2)}<br>
+            Taxable Income: KES ${taxableIncome.toFixed(2)}<br>
+            PAYE: KES ${payee.toFixed(2)}<br>
+            Net Salary: KES ${result.toFixed(2)}
+        `;
+    } else {
+        output = result; // This will be the error message
+    }
+    
+    document.getElementById('output3').innerHTML = output;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const salaryForm = document.getElementById('salaryForm');
+    if (salaryForm) {
+        salaryForm.addEventListener('submit', handleSalarySubmission);
+    }
+});
