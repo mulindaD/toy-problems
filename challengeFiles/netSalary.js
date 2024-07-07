@@ -11,6 +11,14 @@ function netSalaryCalc(basicSal, benefits) {
 
     const taxableIncome = grossSalary - nssfCalculation(grossSalary)
     console.log(`The NSSF Deduction is: ${nssfCalculation(grossSalary)} \nThe Taxable income is: ${taxableIncome}`)
+
+    // Adding Housing Levy 
+    function housingLevy (salary) {
+        return 0.015 * grossSalary
+    }
+    const housingLevyCalc = housingLevy(grossSalary) 
+
+    const housingRelief = 0.15 * housingLevyCalc
    
     function calculatePayee(taxableMoney) {
         
@@ -22,15 +30,15 @@ function netSalaryCalc(basicSal, benefits) {
 
 
         if (taxableMoney <= 24000) {
-            return 0.1 * taxableMoney
+            return 0
         } else if (taxableMoney > 24000 && taxableMoney <= 32333) {
-            return ((taxableMoney - 24000) * 0.25) + (24000 * 0.1) - personalRelief - insuranceRelief
+            return ((taxableMoney - 24000) * 0.25) + (24000 * 0.1) - personalRelief - insuranceRelief - housingRelief
         } else if (taxableMoney > 32333 && taxableMoney <= 500000) {
-            return ((taxableMoney - 32333) * 0.3) + ((32333 - 24001) * 0.25) + (24000 * 0.1) - personalRelief - insuranceRelief
+            return ((taxableMoney - 32333) * 0.3) + ((32333 - 24000) * 0.25) + (24000 * 0.1) - personalRelief - insuranceRelief - housingRelief
         } else if (taxableMoney > 500000 && taxableMoney <= 800000) {
-            return ((taxableMoney - 500000) * 0.325) + ((500000 - 32444) * 0.3) + ((32333 - 24001) * 0.25) + (24000 * 0.1) - personalRelief - insuranceRelief
+            return ((taxableMoney - 500000) * 0.325) + ((500000 - 32444) * 0.3) + ((32333 - 24000) * 0.25) + (24000 * 0.1) - personalRelief - insuranceRelief - housingRelief
         } else if (taxableMoney > 800000) { 
-            return ((taxableMoney - 800000)* 0.35) + ((800000 - 500001) * 0.325) + ((500000 - 32444) * 0.3) + ((32333 - 24001) * 0.25) + (24000 * 0.1) - personalRelief - insuranceRelief
+            return ((taxableMoney - 800000)* 0.35) + ((800000 - 500001) * 0.325) + ((500000 - 32444) * 0.3) + ((32333 - 24000) * 0.25) + (24000 * 0.1) - personalRelief - insuranceRelief - housingRelief
         }
     }
 
@@ -38,19 +46,16 @@ function netSalaryCalc(basicSal, benefits) {
 
     // Testing Payee calculation 
     console.log(`The Payee Calculation: ${payeeCalculation}`)
-    // Adding Housing Levy 
-    function housingLevy (salary) {
-        return 0.015 * grossSalary
-    }
+    
 
-    const housingLevyCalc = housingLevy(grossSalary) 
-    const netSalary = grossSalary - nssfCalculation(grossSalary) - payeeCalculation - housingLevyCalc
+   
+    const netSalary = grossSalary - nssfCalculation(grossSalary) - payeeCalculation - housingLevyCalc - calculateNhifDeduction(grossSalary)
 
     return netSalary 
 }
 
 // Testing Net Salary calculation by adding benefits and basic salary 
-console.log(`The net salary is : ${netSalaryCalc(50000, 10000)}`) 
+console.log(`The net salary is : ${netSalaryCalc(60000, 10000)}`) 
 
 
 function calculateNhifDeduction (salary) {
