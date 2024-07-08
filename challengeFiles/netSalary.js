@@ -14,7 +14,7 @@ function netSalaryCalc(basicSal, benefits) {
 
     // Adding Housing Levy and accounting for Housing Levy Relief from the tax computation.
     function housingLevy (salary) {
-        return 0.015 * grossSalary
+        return 0.015 * salary
     }
     const housingLevyCalc = housingLevy(grossSalary) 
 
