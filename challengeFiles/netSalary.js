@@ -12,7 +12,7 @@ function netSalaryCalc(basicSal, benefits) {
     const taxableIncome = grossSalary - nssfCalculation(grossSalary)
     console.log(`The NSSF Deduction is: ${nssfCalculation(grossSalary)} \nThe Taxable income is: ${taxableIncome}`)
 
-    // Adding Housing Levy 
+    // Adding Housing Levy and accounting for Housing Levy Relief from the tax computation.
     function housingLevy (salary) {
         return 0.015 * grossSalary
     }
@@ -28,7 +28,7 @@ function netSalaryCalc(basicSal, benefits) {
         //Testing Insurance Premium and Insurance Relief
         console.log(`The insurance Premium is: ${calculateNhifDeduction(grossSalary)}\nThe Insurance relief is: ${insuranceRelief}`)
 
-
+        // Calculating PAYE Tax Brackets
         if (taxableMoney <= 24000) {
             return 0
         } else if (taxableMoney > 24000 && taxableMoney <= 32333) {
@@ -48,7 +48,7 @@ function netSalaryCalc(basicSal, benefits) {
     console.log(`The Payee Calculation: ${payeeCalculation}`)
     
 
-   
+   // Net Salary Calculation
     const netSalary = grossSalary - nssfCalculation(grossSalary) - payeeCalculation - housingLevyCalc - calculateNhifDeduction(grossSalary)
 
     return netSalary 
@@ -57,7 +57,7 @@ function netSalaryCalc(basicSal, benefits) {
 // Testing Net Salary calculation by adding benefits and basic salary 
 console.log(`The net salary is : ${netSalaryCalc(60000, 10000)}`) 
 
-
+// Function for calculating NHIF Deduction
 function calculateNhifDeduction (salary) {
     if (salary <= 5999) {
         return 150
@@ -96,6 +96,7 @@ function calculateNhifDeduction (salary) {
     }
 }
 
+// Function for calculating NSSF calculation
 function nssfCalculation (pensionablePay) {
 
     if (pensionablePay <= 36000) {
@@ -105,13 +106,14 @@ function nssfCalculation (pensionablePay) {
     }
 }
 
-// Testing NSSF Dedutcions
+// Testing NSSF Deductions
 // console.log(`Nssf Deductions: ${nssfCalculation(300000)}`)
 
 // Testing NHIF Deductions
 // console.log (`NHIF Deductions: ${calculateNhifDeduction(130000)}`)
 
 
+// Adding Event handler to tie the forms to the JS Code
 function handleSalarySubmission(event) {
     event.preventDefault();
     const basicSalary = parseFloat(document.getElementById('basicSalary').value);
