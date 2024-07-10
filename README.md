@@ -33,7 +33,7 @@ No additional installation or setup is required as this is a static HTML/JavaScr
 
 ## Usage
 The main goal of this project was to successfully execute the three challenges: Student Grade Calculator, Net Salary Calculation and Speed Detector.
-You can test the calculators by checking out the project via this ([project link](https://mulindad.github.io/toy-problems/)) or by opening the `index.html` file in your web browser after opening forking the project, you'll see three forms:
+You can test the calculators by checking out the project via this [project link](https://mulindad.github.io/toy-problems/) or by opening the `index.html` file in your web browser after opening forking the project, you'll see three forms:
 
 1. **Student Grade Calculator**: 
    - Enter a student's grade (0-100).
